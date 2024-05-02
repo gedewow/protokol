@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>лабораторная 11 Задание 1 вариант 30</h1>
+    <h3>Введите размеры:</h3>
+    <label for="a">Сторона a:</label>
+    <input type="number" id="a" min="1"><br>
+    <label for="b">Сторона b:</label>
+    <input type="number" id="b" min="1"><br>
+    <label for="c">Сторона с:</label>
+    <input type="number" id="c" min="1"><br>
+    <label for="x">Ширина x:</label>
+    <input type="number" id="x" min="1"><br>
+    <label for="y">Высота y:</label>
+    <input type="number" id="y" min="1"><br><br>
+    <button onclick="checkFit()">Проверить, подходит ли кирпич</button>
+    <p id="result"></p>
+    
+    <br>
+    <a href="task2.html">Задание 2</a>
+    <script>
+    function checkFit() {
+      const a = parseFloat(document.getElementById('a').value);
+      const b = parseFloat(document.getElementById('b').value);
+      const c = parseFloat(document.getElementById('c').value);
+      const x = parseFloat(document.getElementById('x').value);
+      const y = parseFloat(document.getElementById('y').value);
+    
+      if ((a <= x && b <= y) || (a <= y && b <= x) ||
+          (a <= x && c <= y) || (a <= y && c <= x) ||
+          (b <= x && c <= y) || (b <= y && c <= x)) {
+        document.getElementById('result').textContent = 'Кирпич помещается в отверстие.';
+      } else {
+        document.getElementById('result').textContent = 'Кирпич не помещается в отверстие.';
+      }
+    }
+    </script>
+</body>
+</html>

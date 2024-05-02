@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branches</title>
+    <style>
+        #tooltip {
+            position: absolute;
+            background-color: rgba(245, 239, 239, 0.8);
+            color: rgb(0, 0, 0);
+            padding: 5px;
+            display: none;
+        }
+     
+
+        area {
+            width: 150px;
+            height: 150px;
+        }
+        
+ 
+
+    </style>
+</head>
+<body>
+<p><a href="index.html">На главную</a></p>
+<!--лабораторная 13 задание 1-->
+<h1>Лабораторная 13 задание 1</h1>
+    <section>
+        <img id="map" src="image/Germany_map.jpg" width="700px" height="auto" alt="Map" usemap="#image-map">
+    
+        <map name="image-map">
+            <area shape="rect" coords="350,120,10,47" href="#1-rect" alt="Область: Шлезвиг-гольштейн, Краткая история: Согласно археологическим данным население современного Шлезвиг-Гольштейна после последнего ледникового периода составляли племена охотников и собирателей.">
+            <area shape="rect" coords="500,170,427,134" href="#2-rect" alt="Область: Мекленбург-передняя померания, Краткая история: 929 год. Захватнические походы императора Генриха Первого. Подчинение славян.">
+            <area shape="rect" coords="519,210,542,316" href="#3-rect" alt="Область: Бранденбург, Краткая история: В рамках ГДР в 1952—1990 годах территория современного Бранденбурга представляла собой три округа Котбус Потсдам и Франкфурт.">
+            <area shape="rect" coords="320,300,113,207" href="#4-rect" alt="Область: Нижняя саксония, Краткая история: Земля образована в 1946 году в результате объединения большей части бывшей прусской провинции Ганновер с рядом немецких земель таких как Ольденбург Брауншвейг Шаумбург-Липпе.">
+            <area shape="rect" coords="300,300,500,349" href="#4-rect" alt="Область: Саксония анхальт, Краткая история: В X веке почти вся территория современной Саксонии-Анхальт была частью большого герцогства Саксония входившего в Священную Римскую империю.">
+        </map>
+
+        <div id="tooltip"></div>
+    </section>
+
+    <script>
+        const areas = document.querySelectorAll('area');
+        const tooltip = document.getElementById('tooltip');
+
+        areas.forEach(area => {
+            area.addEventListener('mouseover', function() {
+                const info = this.getAttribute('alt').split(', ');
+                const alt1 = info[0].split(': ')[1];
+                const alt2 = info[1].split(': ')[1];
+               
+                const coords = this.getBoundingClientRect();
+                tooltip.style.top = coords.top + 'px';
+                tooltip.style.left = coords.right + 'px';
+                tooltip.innerHTML = '<ul><li>Область: ' + alt1 + '</li><li>Краткая история: ' + alt2 +'</li></ul>';
+                tooltip.style.display = 'block';
+            });
+
+            area.addEventListener('mouseout', function() {
+                tooltip.style.display = 'none';
+            });
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!--лабораторная 13 задание 2-->
+<style>
+    #imageBlock1 {
+        display: none;
+        width: 20px;
+        height: 20px;
+    }
+
+    #imageBlock2 {
+        display: none;
+        width: 25px;
+        height: 25px;
+    }
+</style>
+<h1>Лабораторная 13 задание 2</h1>
+      <label>Навидите мыш на слово - <span id="textBlock1">Кот</span></label>
+      <img id="imageBlock1" src="image/ket.png" alt="Изображение">
+      
+<br><br>
+      <label>Навидите мыш на слово - <span id="textBlock2">мыш</span></label>
+      <img id="imageBlock2" src="image/mih.png" alt="Изображение">
+  <script>
+      $(document).ready(function(){
+          $('#textBlock1').mouseenter(function(){
+              $(this).hide();
+              $('#imageBlock1').show();
+          });
+  
+          $('#imageBlock1').mouseleave(function(){
+              $(this).hide();
+              $('#textBlock1').show();
+          });
+      });
+
+      $(document).ready(function(){
+          $('#textBlock2').mouseenter(function(){
+              $(this).hide();
+              $('#imageBlock2').show();
+          });
+  
+          $('#imageBlock2').mouseleave(function(){
+              $(this).hide();
+              $('#textBlock2').show();
+          });
+      });
+  </script>
+</body>
+</html>

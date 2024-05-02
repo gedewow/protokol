@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="style_kt.css">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="forms.css">
+    <title>Document</title>
+</head>
+<body class="original-bg">
+
+<div class="header">
+    <div class="text_hr">
+        <div class="text_hr_vp">
+          <img src="image/lg.png" class="img_lg">
+          <h1 class="h1">VirtualPlay</h1>
+        </div>
+        
+
+        <div class="settings-container">
+            <div class="settings-button" id="theme-switcher">Изменить тему</div>
+            
+            <div class="settings-button" id="theme-switcher"><a href="feedback.html">Обратная связь</a></div>
+             <div class="settings-button">Контакты
+            <div class="settings-content">
+                <a href="https://web.whatsapp.com/">Вацап</a>
+                <a href="https://web.telegram.org/">Телеграм</a>
+                <a href="https://ru-ru.facebook.com/">Фейсбук</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+</div>
+<script src="theme.js"></script>
+    <div id="sidebar">
+       
+            <div class="btn btn-1"><a href="index.html">Главная </a></div> 
+            <div class="btn btn-2 dropdown-1 dropbtn-1">Каталог
+              <div class="dropdown-content dropdown-content-1">
+                <a href="genres.html">Жанры</a>
+                <a href="newkt.html">Новые</a>
+                <a href="#">Популярные</a>
+                <a href="katalog.html">Все</a>
+              </div>
+            </div> 
+            <div class="btn btn-3"><a href="news.html">Новости</a></div> 
+           
+            <div class="btn btn-5"><a href="author.html">Вход</a></div>
+   
+    </div>
+<body>
+<div class="feedback">
+    <div class="containerob">
+        <h1>Обратная связь</h1>
+        <form class="formob" action="/submit_feedback" method="post">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="subject">Тема:</label>
+            <input type="text" id="subject" name="subject" required>
+
+            <label for="message">Сообщение:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+</div>
+<div class ="footer">
+       
+  <div class="text_hr_vp">
+      <img src="image/lg.png" class="img_lg_footer">
+      <h1 class="h1">VirtualPlay</h1>
+    </div>
+
+</div>
+</body>
+</html>

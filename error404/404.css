@@ -1,0 +1,29 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+  }
+  .error-message {
+    text-align: center;
+    animation: bounce 1s infinite alternate;
+  }
+  .error-code {
+    font-size: 6rem;
+    color: #333;
+    margin: 0;
+  }
+  .error-text {
+    color: #555;
+  }
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="style_kt.css">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="forms.css">
+    <title>Document</title>
+</head>
+<body class="original-bg">
+
+<div class="header">
+    <div class="text_hr">
+        <div class="text_hr_vp">
+          <img src="image/lg.png" class="img_lg">
+          <h1 class="h1">VirtualPlay</h1>
+        </div>
+        
+
+        <div class="settings-container">
+            <div class="settings-button" id="theme-switcher">Изменить тему</div>
+            
+            <div class="settings-button" id="theme-switcher"><a href="feedback.html">Обратная связь</a></div>
+             <div class="settings-button">Контакты
+            <div class="settings-content">
+                <a href="https://web.whatsapp.com/">Вацап</a>
+                <a href="https://web.telegram.org/">Телеграм</a>
+                <a href="https://ru-ru.facebook.com/">Фейсбук</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+</div>
+<script src="theme.js"></script>
+    <div id="sidebar">
+       
+            <div class="btn btn-1"><a href="index.html">Главная </a></div> 
+            <div class="btn btn-2 dropdown-1 dropbtn-1">Каталог
+              <div class="dropdown-content dropdown-content-1">
+                <a href="genres.html">Жанры</a>
+                <a href="newkt.html">Новые</a>
+                <a href="#">Популярные</a>
+                <a href="katalog.html">Все</a>
+              </div>
+            </div> 
+            <div class="btn btn-3"><a href="news.html">Новости</a></div> 
+           
+            <div class="btn btn-5"><a href="author.html">Вход</a></div>
+   
+    </div>
+ 
+     
+    <form id="authForm">
+      <h1>Форма авторизации/регистрации</h1>
+      <label for="username">Имя пользователя:</label>
+      <input type="text" id="username" name="username">
+      <label for="password">Пароль:</label>
+      <input type="password" id="password" name="password">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email"><br>
+      <button onclick="validateForm()">Сохранить данные</button>
+  </form>
+  
+
+<!--  лабораторная 12 Реализовать в своем проекте форму-->
+    <script>
+       function validateForm() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    var email = document.getElementById("email").value;
+
+    if (username === "" || password === "" || email === "") {
+        alert("Пожалуйста, заполните все поля формы.");
+    } else {
+        var userData = {
+            username: username,
+            password: password,
+            email: email
+        };
+    if (password.length < 6) {
+                alert('Пароль должен содержать как минимум 6 символов.');
+                return false;
+            }
+        displayUserData(userData);
+    }
+}
+
+//function displayUserData(userData) {
+  //  var userDataDiv = document.getElementById("userData");
+    //userDataDiv.innerHTML = `
+      //  <p><strong>Имя пользователя:</strong> ${userData.username}</p>
+        //<p><strong>Пароль:</strong> ${userData.password}</p>
+       // <p><strong>Email:</strong> ${userData.email}</p>}
+
+      </script>
+</body>
+</html>

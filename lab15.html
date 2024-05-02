@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+</head>
+<body>
+  <form id="auth-form">
+    <label for="username">Логин:</label>
+    <input type="text" id="username" required>
+
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" required>
+
+    <label for="inputField">Введите слово:</label>
+    <input type="text" id="inputField" placeholder="Введите слово">
+    <button onclick="saveDataToCookie()">Сохранить слово в cookie</button>
+
+    <label for="secret-word">Секретное слово:</label>
+    <input type="password" id="secret-word" required>
+
+    <button type="submit">Войти</button>
+  </form>
+  <div id="secret-info" style="display: none;">
+    <h2>Секретная информация</h2>
+    <p id="secret-data"></p>
+  </div>
+
+  <script>
+    function saveDataToCookie() {
+      const inputValue = document.getElementById('inputField').value;
+      const expirationDate = new Date();
+      expirationDate.setDate(expirationDate.getDate() + 2); // Установка действия cookie на 2 дня
+
+      document.cookie = `savedData=${inputValue}; expires=${expirationDate.toUTCString()}; path=/`;
+      alert("Данные успешно сохранены в cookie на 2 дня.");
+    }
+
+    document.getElementById('auth-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const secretWord = document.getElementById('secret-word').value;
+
+      const secretData = {
+        username: username,
+        password: password,
+        secretWord: secretWord
+      };
+
+      const cookies = document.cookie.split('; ');
+      const savedData = cookies.find(cookie => cookie.startsWith('savedData='));
+
+      if (savedData && savedData.split('=')[1] === secretWord) {
+        document.getElementById('secret-info').style.display = 'block';
+        document.getElementById('secret-data').textContent = JSON.stringify(secretData, null, 2);
+      } else {
+        alert('Неверное секретное слово!');
+      }
+    });
+  </script>
+</body>
+</html>

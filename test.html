@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .slider {
+      position: relative;
+      width: 100%;
+    }
+
+    .slides {
+      display: flex;
+      overflow: hidden;
+      width: 190%; /* 5 * 100% для 5 картинок */
+      height: 20%;
+    }
+
+    .slides img {
+      width: 500%; /* 100% / 5 для 5 картинок */
+      display: none;
+    }
+
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-10%);
+      cursor: pointer;
+    }
+
+    .prev {
+      left: 10px;
+    }
+
+    .next {
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+ <div class="slider">
+    <div class="slides">
+      <img src="image/dark_rider-cover.jpg" alt="Image 1">
+      <img src="image/force_mage-cover.jpg" alt="Image 2">
+      <img src="image/dark_rider-cover.jpg" alt="Image 1">
+      <img src="image/force_mage-cover.jpg" alt="Image 2">
+      <img src="image/dark_rider-cover.jpg" alt="Image 1">
+      <img src="image/force_mage-cover.jpg" alt="Image 2">
+      <img src="image/dark_rider-cover.jpg" alt="Image 1">
+      <img src="image/force_mage-cover.jpg" alt="Image 2">
+      <img src="image/dark_rider-cover.jpg" alt="Image 1">
+      <img src="image/force_mage-cover.jpg" alt="Image 2">
+      <img src="image/dark_rider-cover.jpg" alt="Image 1">
+      <img src="image/force_mage-cover.jpg" alt="Image 2">
+      <img src="image/dark_rider-cover.jpg" alt="Image 1">
+      <img src="image/force_mage-cover.jpg" alt="Image 2">
+      <img src="image/dark_rider-cover.jpg" alt="Image 1">
+      
+
+    </div>
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+  </div>
+
+
+</body>
+  <script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slides img');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+
+ function showSlide(index) {
+      const slideWidth = 100 / slides.length;
+      const translateX = -index * slideWidth;
+
+      slides.forEach((slide, i) => {
+        slide.style.transform = `translateX(${translateX}%)`;
+        slide.style.display = i === index ? 'block' : 'none';
+      });
+    }
+
+    function nextSlide() {
+      slideIndex = (slideIndex + 1) % slides.length;
+      showSlide(slideIndex);
+    }
+
+    function prevSlide() {
+      slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+      showSlide(slideIndex);
+    }
+
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+
+    showSlide(slideIndex);
+
+    setInterval(nextSlide, 5000); // автоматическое переключение каждые 5 секунд
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Polar Area Chart</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<h1>Лабораторная работа 14</h1>
+<p><a href="index.html">На главную</a></p>
+<canvas id="myChart" width="400px" height="400px"></canvas>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'polarArea',
+    data: {
+        labels: ['Студенты', 'Магистранты'],
+        datasets: [{
+            data: [70, 30],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(54, 162, 235, 0.6)'
+            ]
+        }]
+    },
+    options: {
+        animation: {
+            animateRotate: true,
+            animateScale: true
+        },
+        tooltips: {
+            callbacks: {
+                label: function(tooltipItem, data) {
+                    var dataset = data.datasets[tooltipItem.datasetIndex];
+                    var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                        return previousValue + currentValue;
+                    });
+                    var currentValue = dataset.data[tooltipItem.index];
+                    var percentage = Math.floor(((currentValue/total) * 100)+0.5);         
+                    return data.labels[tooltipItem.index] + ": " + currentValue + " (" + percentage + "%)";
+                }
+            }
+        }
+    }
+});
+</script>
+</body>
+</html>
